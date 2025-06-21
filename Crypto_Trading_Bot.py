@@ -1,6 +1,8 @@
 import logging
 from binance.client import Client
 from binance.exceptions import BinanceAPIException
+from dotenv import load_dotenv
+import os
 import sys
 
 # Setup logging
@@ -115,8 +117,9 @@ def get_user_input():
 
 def main():
     # Use your testnet API credentials
-    api_key = 'd8a1f0d16592d37dc7e3bf095e272e5863c58abba43e818e007e43560863a53f'
-    api_secret = 'c10275c73152808c74eb2bfe6653b3262568e79e43857a22767f9c1b76868c29'
+    load_dotenv()
+    api_key = os.getenv("API_KEY")
+    api_secret = os.getenv("API_SECRET")
 
     bot = BasicBot(api_key, api_secret, testnet=True)
 
